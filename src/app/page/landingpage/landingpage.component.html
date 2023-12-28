@@ -1,0 +1,106 @@
+<div class="card">
+    <div class="title">Ajouter un nouveaux cours</div>
+    <div class="content">
+        <div class="container-fluid">
+
+
+            <form [formGroup]="addForm" (ngSubmit)="AddAction()" >
+
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label for="">Nom de l'action</label>
+                        <input type="text" class="form-control" formControlName="nom">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="">nombre de personne touchés</label>
+                        <input type="number" class="form-control" formControlName="nombre">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="">Objectif</label>
+                        <input type="text" class="form-control" formControlName="objectif">
+                    </div>
+
+       
+
+
+                </div>
+                <div class="col-sm-6">
+
+                    <div class="form-group">
+                        <label for="">Date de création</label>
+                        <input type="Date" class="form-control" formControlName="date">
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="">Responsable de l'action</label>
+                        <select class="form-control search-slt" name="responsable" formControlName="responsable">
+                          <option *ngFor="let option of responsable" [value]="option">{{ option }}</option>
+                       </select>
+                       
+                          
+                          
+                    </div>
+
+
+    
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-danger" style="margin-top: 30px; margin-right: 10px;">Ajouter l'action</button>
+            <button type="button" class="btn btn-danger" style="margin-top: 30px;" data-bs-toggle="modal" data-bs-target="#exampleModal">Voir la liste des actions</button>
+
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Liste des actions : </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nom</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Objectif</th>
+                    <th scope="col">Responsable</th>
+                    <th scope="col">nombre de personne touchés</th>
+  
+                </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let a of actionService.actions$ | async; let i = index">
+                    <th scope="row">{{ i + 1 }}</th>
+                    <td>{{ a.nom }}</td>
+                    <td>{{ a.date | date }}</td>
+                    <td>{{ a.objectif }}</td>
+                    <td>{{ a.responsable }}</td>
+                    <td>{{ a.nombre }}</td>
+                  </tr>
+                </tbody>
+              </table>
+
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+        </div>
+      </div>
+    </div>
+  </div>
+          </form>
+       
+
+        </div>
+    </div>
+</div>
+
+
+

@@ -1,0 +1,23 @@
+.card {
+    border: 1px solid #e6ecf5;
+    margin-bottom: 1em;
+    font-weight: 300;
+}
+
+.card .title {
+    padding: 15px 20px;
+    border-bottom: 1px solid #e6ecf5;
+    margin-bottom: 10px;
+    color: #000;
+    font-size: 18px;
+}
+
+
+
+
+    #page-container {
+        padding-left: 80px;
+    
+
+    
+}
